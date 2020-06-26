@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (TemplateView, ListView,
                                     DetailView, CreateView,
-                                    UpdateView, DetailView,)
+                                    UpdateView, DeleteView,)
 
 # Create your views here.
 
@@ -41,7 +41,7 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
     model = Post
 
 
-class PostDeleteView(LoginRequiredMixin,DetailView):
+class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     success_url = reverse_lazy('post_list')
 
@@ -66,7 +66,7 @@ class DraftListView(LoginRequiredMixin,ListView):
 @login_required
 def post_publish(request,pk):
     post = get_object_or_404(Post,pk=pk)
-    post.publish
+    post.publish()
     return redirect('post_detail',pk=pk)
 
 
@@ -80,9 +80,9 @@ def add_comment_to_post(request,pk):
             comment.post = post
             comment.save()
             return redirect('post_detail',pk=post.pk)
-        else:
-            form = CommentForm()
-        return render(request,'blog/comment_form.html',{'form',form})
+    else:
+        form = CommentForm()
+    return render(request,'blog/comment_form.html',{'form':form})
 
 
 @login_required
