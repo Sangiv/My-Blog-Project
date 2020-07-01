@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% block content%}
 
-  {% for post in post %}
+  {% for post in draft_posts %}
     <div class="post">
       <p class="date">Created: {{post.created_date|date:'d-m-Y'}}</p>
       <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
