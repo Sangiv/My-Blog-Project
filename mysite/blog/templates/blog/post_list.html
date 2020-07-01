@@ -10,9 +10,13 @@
       <p>Published on: {{ post.published_date|date:"D M Y" }}</p>
     </div>
 
-    <h1 class="try"><a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a></h1>
+    <h3 class="try"><a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a></h3>
   </div>
 
+  <p></p>
+  <p></p>
+  <p></p>
+  
   {% endfor %}
 
 </div>
