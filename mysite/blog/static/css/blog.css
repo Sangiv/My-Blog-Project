@@ -3,13 +3,17 @@
   margin-right: auto;
 }
 
+.try{
+  font-size: 1.5em
+}
+
 .techfont{
   font-family: 'Marvel',sans-serif;
   font-size: 1.5em;
   margin-bottom: 10px;
 }
 
-.bigbrand{
+.navbar-brand{
   font-size: 1.5em;
 }
 
